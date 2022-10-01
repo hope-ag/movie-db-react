@@ -5,12 +5,15 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "airbnb",
-    "airbnb-typescript",
-    "plugin:prettier/recommended"
+    "airbnb-typescript"
   ],
   "rules": {
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0
+    "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/comma-dangle": 0,
+    "@typescript-eslint/semi": 0,
+    "eol-last": 0,
+    "curly": ["error", "multi"]
   },
   "plugins": ["react", "jsx-a11y"],
   "parserOptions": {
