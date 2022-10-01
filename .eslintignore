@@ -1,0 +1,7 @@
+dist
+public
+src/assets
+node_modules
+src/locales
+*.cjs
+vite.config.ts
