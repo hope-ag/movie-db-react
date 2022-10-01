@@ -13,7 +13,15 @@
     "@typescript-eslint/comma-dangle": 0,
     "@typescript-eslint/semi": 0,
     "eol-last": 0,
-    "curly": ["error", "multi"]
+    "curly": ["error", "multi"],
+    "@typescript-eslint/no-explicit-any": 0,
+    "arrow-parens": ["error", "as-needed"],
+    "no-console": "off",
+    "import/no-unresolved": "off",
+    "sort-imports": 0,
+    "import/named": 0,
+    "import/extensions": 0,
+    "react/require-default-props": 0
   },
   "plugins": ["react", "jsx-a11y"],
   "parserOptions": {

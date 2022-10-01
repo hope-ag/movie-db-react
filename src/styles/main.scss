@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-sans;
+html {
+  font-size: 14px;
+  @apply bg-white text-gray-800 font-sans;
+  &.dark {
+    @apply bg-gray-900 text-gray-100;
+  }
 }
