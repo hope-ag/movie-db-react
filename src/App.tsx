@@ -1,23 +1,23 @@
-import { useEffect, useState, Suspense } from 'react';
-import { useTranslation } from 'react-i18next';
-import Navbar from './components/core/Navbar';
-import i18n from './modules/i18n';
-import { searchMovies } from './services/movies';
+import type { i18n } from 'i18next';
+import { useEffect, Suspense, useState } from 'react';
+import { TFunction, withTranslation } from 'react-i18next';
+import Navbar from './components/shared/Navbar/Navbar';
+// import { searchMovies } from './services/movies';
 
-function App() {
-  const { t } = useTranslation();
-  const [language, setLanguage] = useState('en');
+function App({ t, i18n }: { t: TFunction, i18n: i18n }) {
+  // const savedLng =
+  const [language, setLanguage] = useState(localStorage.getItem('i18nextLng') || 'en');
 
   const onChange = (event: any) => {
     setLanguage(event.target?.value);
+    i18n.changeLanguage(event.target?.value);
   };
 
   useEffect(() => {
-    i18n.changeLanguage(language);
-    searchMovies('bat', 'movie').then(data => {
-      console.log(data)
-    })
-  }, [language]);
+    // searchMovies('bat', 'movie').then(data => {
+    //   console.log(data)
+    // })
+  }, []);
 
   return (
     <Suspense fallback="Loading...">
@@ -36,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default withTranslation()(App);
