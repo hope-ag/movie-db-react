@@ -1,5 +1,6 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import { Transition } from '@headlessui/react';
+import { useClickAway } from 'ahooks';
 import { HiSearch, HiX } from 'react-icons/hi'
 import { getMovieMenuOptions } from './menuOptions';
 import DropdownMenu from '../DropdownMenu';
@@ -10,6 +11,12 @@ function Navbar() {
   const toggleSearch = () => {
     setSearchOpen(val => !val)
   }
+
+  const searchEl = useRef<HTMLDivElement>(null);
+
+  useClickAway(() => {
+    setSearchOpen(false);
+  }, searchEl);
 
   return (
     <nav className="relative h-20 mb-8">
@@ -72,7 +79,7 @@ function Navbar() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 absolute translate-y-6"
       >
-        <div className="flex items-center bg-gray-200 h-full w-full">
+        <div ref={searchEl} className="flex items-center bg-gray-200 h-full w-full">
           <form action="" className="container h-full w-full flex justify-center bg-gray-200 items-center">
             <HiSearch className="ml-auto text-2xl font-semibold translate-x-8 text-gray-500" />
             <input
