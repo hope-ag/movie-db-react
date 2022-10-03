@@ -18,4 +18,14 @@ const AxiosInstance = axios.create({
   headers: auth.getHeaders(),
 });
 
+AxiosInstance.interceptors.response.use(
+  response => response.data,
+  async error => {
+    const { response } = error
+    if (!response) return Promise.reject(error);
+    if (response.data) return Promise.reject(response.data);
+    return Promise.reject(response);
+  }
+);
+
 export default AxiosInstance;

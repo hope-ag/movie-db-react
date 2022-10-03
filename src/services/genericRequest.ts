@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 // eslint-disable-next-line import/extensions
 import locale from '~/modules/i18n';
 import AxiosInstance from './axiosService';
@@ -17,7 +16,7 @@ export async function genericGetRequest<T>(
   path: string,
   query: Record<string, any> = {},
   withAuth?: boolean
-): Promise<AxiosResponse<T>> {
+): Promise<T> {
   const params: any = { ...query, language: locale.language };
   if (withAuth) params.session_id = sessionId;
   return AxiosInstance.get(path, { params })
@@ -37,7 +36,7 @@ export async function genericPostRequest<T>(
   query: Record<string, any> = {},
   body: Record<string, any> = {},
   withAuth?: boolean
-): Promise<AxiosResponse<T>> {
+): Promise<T> {
   const params: Record<string, any> = { ...query, language: locale.language };
   if (withAuth) params.session_id = sessionId;
 
@@ -76,7 +75,7 @@ export async function genericPutRequest<T>(
   query: Record<string, any> = {},
   body: Record<string, any> = {},
   withAuth?: boolean
-): Promise<AxiosResponse<T>> {
+): Promise<T> {
   const params: Record<string, any> = { ...query, language: locale.language };
   if (withAuth) params.session_id = sessionId;
 
@@ -97,7 +96,7 @@ export async function genericPatchRequest<T>(
   query: Record<string, any> = {},
   body: Record<string, any> = {},
   withAuth?: boolean
-): Promise<AxiosResponse<T>> {
+): Promise<T> {
   const params: Record<string, any> = { ...query, language: locale.language };
   if (withAuth) params.session_id = sessionId;
 
