@@ -1,8 +1,9 @@
 import type { i18n } from 'i18next';
 import { useEffect, Suspense, useState } from 'react';
 import { TFunction, withTranslation } from 'react-i18next';
+import { useDarkMode } from 'usehooks-ts'
 import Navbar from './components/shared/Navbar/Navbar';
-// import { searchMovies } from './services/movies';
+import { getMovies } from '@/services/requests';
 
 function App({ t, i18n }: { t: TFunction, i18n: i18n }) {
   // const savedLng =
@@ -13,10 +14,17 @@ function App({ t, i18n }: { t: TFunction, i18n: i18n }) {
     i18n.changeLanguage(event.target?.value);
   };
 
+  const { isDarkMode } = useDarkMode()
+
   useEffect(() => {
-    // searchMovies('bat', 'movie').then(data => {
-    //   console.log(data)
-    // })
+    if (isDarkMode) document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+  }, [isDarkMode])
+
+  useEffect(() => {
+    getMovies('popular').then(data => {
+      console.log(data);
+    })
   }, []);
 
   return (
@@ -25,7 +33,7 @@ function App({ t, i18n }: { t: TFunction, i18n: i18n }) {
         <Navbar />
         <div className="container">
           <p>{t('intro.whats-your-name')}</p>
-          <select value={language} onChange={onChange}>
+          <select className="bg-transparent" value={language} onChange={onChange}>
             <option value="en">English</option>
             <option value="fr">Français</option>
             <option value="es">Español</option>

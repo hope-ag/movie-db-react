@@ -79,15 +79,15 @@ function Navbar() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 absolute translate-y-6"
       >
-        <div ref={searchEl} className="flex items-center bg-gray-200 h-full w-full">
-          <form action="" className="container h-full w-full flex justify-center bg-gray-200 items-center">
+        <div ref={searchEl} className="flex items-center bg-gray-200 dark:bg-gray-800/50 h-full w-full">
+          <form action="" className="container h-full w-full flex justify-center items-center">
             <HiSearch className="ml-auto text-2xl font-semibold translate-x-8 text-gray-500" />
             <input
               type="text"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
               placeholder="Search"
-              className="py-2 w-full sm:w-96 pl-10 rounded-full"
+              className="py-2 w-full dark:bg-gray-900 outline-none border focus:border-gray-300 dark:border-gray-800 dark:focus:border-gray-600 sm:w-96 pl-10 rounded-full"
             />
             <button
               type="button"
