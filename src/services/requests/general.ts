@@ -1,17 +1,5 @@
 // import { useAxios } from '@vueuse/integrations'
 import { genericGetRequest } from '../genericRequest';
-import type { MovieSearchType } from '~/types/movies';
-//
-
-export async function searchMovies(
-  search = '',
-  type: MovieSearchType = 'movie',
-  query: Record<any, any> = {}
-) {
-  const newQuery = query;
-  newQuery.query = search;
-  return genericGetRequest(`/search/${type}`, newQuery);
-}
 
 export async function getCertification(type: 'movie' | 'tv') {
   return genericGetRequest(`/certification/${type}/list`);
